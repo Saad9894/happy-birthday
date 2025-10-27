@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical Birthday Surprise for Ayesha</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&family=Dancing+Script&display=swap"
+        rel="stylesheet">
+    <style>
+        /* 🌸 GLOBAL STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8bbd9, #e1bee7, #fce4ec);
+            color: #4a148c;
+            overflow-x: hidden;
+            transition: background 2s ease;
+        }
+
+        .page {
+            display: none;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+
+        .page.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: #e91e63;
+            text-shadow: 0 0 20px rgba(233, 30, 99, 0.7);
+            margin-bottom: 15px;
+            animation: fadeInDown 1.8s ease;
+        }
+
+        .subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: #9c27b0;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease;
+        }
+
+        .button {
+            background: linear-gradient(45deg, #ff69b4, #ffb3ba);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 105, 180, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: glowPulse 2s infinite alternate;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes glowPulse {
+            from {
+                box-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
+            }
+
+            to {
+                box-shadow: 0 0 25px rgba(255, 105, 180, 0.8);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(-20vh);
+                opacity: 1;
+            }
+        }
+
+        @keyframes swirl {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .heartbeat {
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #fff, #ff69b4);
+            animation: sparkleFloat 4s infinite;
+        }
+
+        @keyframes sparkleFloat {
+            0% {
+                opacity: 0.6;
+                transform: translateY(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 0.6;
+                transform: translateY(0);
+            }
+        }
+
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+        .fadeUp {
+            animation: floatUp 3s ease;
+        }
+
+      .gallery {
+    display: grid
+;
+    /* grid-template-columns: repeat(auto-fit, minmax(300px, 3fr)); */
+    gap: 20px;
+    max-width: 915px;
+    margin: 20px auto;
+}
+
+        .gallery img {
+            width: 100%;
+            border-radius: 12px;
+            transition: transform .3s;
+       
+    height: 23vw;
+    /* width: 17vw; */
+}
+        
+        .gallery img:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .letter {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+            line-height: 1.7;
+            color: #4a148c;
+            max-width: 650px;
+            margin: 20px auto;
+        }
+
+        @keyframes confettiFall {
+            from {
+                transform: translateY(-100vh);
+            }
+
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* 🎂 CAKE */
+        .cake {
+            font-size: 4rem;
+            animation: slideUp 2s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100vh);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        /* 🌸 Responsive */
+        @media(max-width:768px) {
+            .title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .letter {
+                font-size: 1rem;
+            }
+
+            .cake {
+                font-size: 3rem;
+            }
+        }
+        .img {
+    width: 56%;
+}
+    </style>
+</head>
+
+<body>
+    <audio id="bgMusic" loop>
+        <source
+            src="https://cdn.pixabay.com/download/audio/2021/10/19/audio_34b4e5b41e.mp3?filename=happy-birthday-piano-110527.mp3"
+            type="audio/mp3">
+    </audio>
+
+    <!-- PAGE 1 -->
+    <div id="page1" class="page active">
+        <div class="title">Click to Begin the Magic</div>
+        <div class="heartbeat" style="font-size:5rem;">❤️</div>
+        <div class="subtitle">Preparing something special...<br>For someone very special...</div>
+        <button class="button" onclick="nextPage(1)">Start the Magic 💫</button>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div id="page2" class="page" style="background:linear-gradient(to bottom,#0f0f23,#1a1a2e);color:#fff;">
+        <div class="title">Are You Ready?</div>
+        <div class="subtitle">Something magical is about to begin…</div>
+        <div id="countdown" style="font-size:3rem;">3</div>
+    </div>
+
+    <!-- PAGE 3 -->
+    <div id="page3" class="page" style="background:linear-gradient(135deg,#fce4ec,#f8bbd9);">
+        <div class="title">Happy Birthday Ayesha 💝</div>
+        <img class="img" src="WhatsApp Image 2025-10-27 at 23.14.46_1eb37596.jpg" alt=" 1">
+        <div class="cake">🎂</div>
+        <div class="subtitle">You’re 22 and fabulous! 🎉</div>
+        <button class="button" onclick="nextPage(3)">Open the Envelope 💌</button>
+    </div>
+
+    <!-- PAGE 4 -->
+    <div id="page4" class="page">
+        <div class="title">A Message from My Heart</div>
+        <div class="glassmorphism">
+            <div id="envelope" style="font-size:3rem;cursor:pointer;">✉️</div>
+            <div id="card1" class="subtitle" style="display:none;">💖 You make every day shine brighter.</div>
+            <div id="card2" class="subtitle" style="display:none;">🌷 You’re not just my sister — you’re my heart.</div>
+            <div id="card3" class="subtitle" style="display:none;">🌟 Our bond is forever!</div>
+        </div>
+        <button class="button" id="memoriesBtn" style="display:none;" onclick="nextPage(4)">See Our Memories 📸</button>
+    </div>
+
+    <!-- PAGE 5 -->
+    <div id="page5" class="page">
+        <div class="title">Moments That Made Us Smile</div>
+        <div class="gallery fadeUp">
+            <img src="WhatsApp Image 2025-10-27 at 23.10.13_2456ad17.jpg" alt="1">
+            <img src="WhatsApp Image 2025-10-27 at 23.10.13_62872206.jpg" alt="2">
+            <img src="WhatsApp Image 2025-10-27 at 23.10.13_d08ea740.jpg" alt="3">
+            <img src="WhatsApp Image 2025-10-27 at 23.10.14_18e10938.jpg" alt="1">
+            <img src="WhatsApp Image 2025-10-27 at 23.10.14_b3877540.jpg" alt="2">
+            <img src="WhatsApp Image 2025-10-27 at 23.10.14_d23a0c80.jpg" alt="3">
+            <img src="WhatsApp Image 2025-10-27 at 23.10.15_06e54bbe.jpg" alt="3">
+        </div>
+        <button class="button" onclick="nextPage(5)">Read My Letter 💖</button>
+    </div>
+
+    <!-- PAGE 6 -->
+    <div id="page6" class="page">
+        <div class="title">A Letter from My Heart</div>
+        <div class="glassmorphism letter fadeUp">
+            Dear Ayesha,<br><br>
+            You are my sunshine on cloudy days,<br>
+            My laughter after tears,<br>
+            My forever cheerleader,<br>
+            My reason to smile every single day.<br><br>
+            I’m proud of the woman you’ve become — kind, responsible, and full of grace.<br><br>
+            You’re not just my sister — you’re my heart.<br>
+            Happy 22nd Birthday, my world. 💝
+        </div>
+        <button class="button" onclick="nextPage(6)">One Last Surprise 💞</button>
+    </div>
+
+    <!-- PAGE 7 (New Final Scene) -->
+    <div id="page7" class="page" style="background:radial-gradient(circle at top,#fde0f3,#f3d1f4,#d1c4e9);">
+        <div class="title">Forever My Sister 🌙</div>
+        <div class="subtitle">Made with 💗 by Zaneera Fathima<br>For my dearest sister Ayesha on her 22nd Birthday 🎂
+        </div>
+        <div id="starContainer"></div>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        const bgMusic = document.getElementById('bgMusic');
+        document.addEventListener('click', () => bgMusic.play(), { once: true });
+
+        function nextPage(n) {
+            document.getElementById(`page${n}`).classList.remove('active');
+            currentPage = n + 1;
+            const next = document.getElementById(`page${currentPage}`);
+            if (next) { next.classList.add('active'); }
+            if (currentPage === 2) startCountdown();
+            if (currentPage === 4) setTimeout(showCards, 500);
+            if (currentPage === 7) createStars();
+        }
+
+        /* Countdown Animation */
+        function startCountdown() {
+            let count = 3; const el = document.getElementById('countdown');
+            const timer = setInterval(() => {
+                el.textContent = count; count--;
+                if (count < 0) { clearInterval(timer); nextPage(2); }
+            }, 1000);
+        }
+
+        /* Envelope Cards */
+        function showCards() {
+            setTimeout(() => { document.getElementById('card1').style.display = 'block'; }, 600);
+            setTimeout(() => { document.getElementById('card2').style.display = 'block'; }, 1500);
+            setTimeout(() => { document.getElementById('card3').style.display = 'block'; document.getElementById('memoriesBtn').style.display = 'inline-block'; }, 2400);
+        }
+
+        /* Sparkle Background */
+        setInterval(() => {
+            const s = document.createElement('div');
+            s.className = 'sparkle';
+            s.style.left = Math.random() * 100 + '%';
+            s.style.top = Math.random() * 100 + '%';
+            document.body.appendChild(s);
+            setTimeout(() => s.remove(), 4000);
+        }, 300);
+
+        /* Stars in Final Scene */
+        function createStars() {
+            const container = document.getElementById('starContainer');
+            for (let i = 0; i < 60; i++) {
+                const star = document.createElement('div');
+                star.textContent = '✨';
+                star.style.position = 'absolute';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animation = `floatUp ${3 + Math.random() * 4}s linear`;
+                container.appendChild(star);
+                setTimeout(() => star.remove(), 5000);
+            }
+        }
+    </script>
+</body>
+
+</html>
